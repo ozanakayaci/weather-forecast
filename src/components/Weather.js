@@ -10,10 +10,9 @@ function Weather() {
 
   useEffect(() => {
     axios(
-      `http://api.weatherapi.com/v1/forecast.json?key=${process.env.REACT_APP_API_KEY}&q=${location}&days=7`
+      `https://api.weatherapi.com/v1/forecast.json?key=${process.env.REACT_APP_API_KEY}&q=${location}&days=7`
     ).then((response) => {
       setWeatherData(response.data.forecast.forecastday);
-      console.log(response);
     });
   }, [location]);
 
@@ -22,7 +21,6 @@ function Weather() {
       <br />
       <div className="grid">
         {weatherData.map((data, i) => {
-          console.log(`test`, data);
           return (
             <div className={i === 0 ? "today card" : "card"} key={i}>
               <span className="day">
